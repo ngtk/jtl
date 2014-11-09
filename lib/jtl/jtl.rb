@@ -26,7 +26,8 @@ class Jtl
       @jtl = path_or_file_or_ary
     else
       path_or_file_or_ary = path_or_file_or_ary.path if path_or_file_or_ary.kind_of?(File)
-      @jtl = CSV.read(path_or_file_or_ary)
+      csv_options = { col_sep: @options[:col_sep] } unless @options[:col_sep].nil?
+      @jtl = CSV.read(path_or_file_or_ary, csv_options)
     end
   end
 
